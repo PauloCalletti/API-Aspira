@@ -1,0 +1,29 @@
+{
+  "name": "API Aspira",
+  "version": "1.0.0",
+  "description": "API para o programa ASPIRA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paulo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "form-data": "^3.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloCalletti/api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PauloCalletti/api/issues"
+  },
+  "homepage": "https://github.com/PauloCalletti/api#readme",
+  "keywords": [
+    "API",
+    "ASPIRA",
+    "Rota"
+  ]
+}
