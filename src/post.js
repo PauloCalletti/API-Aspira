@@ -1,16 +1,14 @@
-
-// import data from "arquivo/data.js";
-
 const data = require("./arquivo/data_empresa.js")
 const Axios = require("axios");
 
+require("dotenv/config.js")
 
 const parameters = {
 
   method: "post",
-  url: "https://api.sandbox.plugnotas.com.br/empresa",
+  url: (process.env.POST_URL),
   headers: { 
-    "x-api-key": "2da392a6-79d2-4304-a8b7-959572c7e44d", 
+    "x-api-key": (process.env.X_API_KEY), 
     "Content-Type": "application/json"
   },
   data : data
