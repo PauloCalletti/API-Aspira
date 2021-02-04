@@ -1,10 +1,11 @@
-
 const Path = require("path")
 const Axios = require("axios")
 const Fs = require("fs")
 
+require("dotenv/config.js")
+
    async function download() {
-   const url = "https://api.sandbox.plugnotas.com.br/nfse/xml/60198cb317d172abc2dd934f"
+   const url = (process.env.XML_URL)
    const path = Path.resolve(__dirname, "arquivo", "xml.xml")
    const writer = Fs.createWriteStream(path)
 
@@ -12,7 +13,7 @@ const Fs = require("fs")
    url,
    method: "GET",
    headers: {
-      "x-api-key": "2da392a6-79d2-4304-a8b7-959572c7e44d"
+      "x-api-key": (process.env.X_API_KEY),
    },
    responseType: "stream"
    })
