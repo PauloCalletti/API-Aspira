@@ -3,9 +3,11 @@ const FormData = require("form-data");
 const Fs = require("fs");
 const Path = require("path")
 
+require("dotenv/config.js")
+
   async function returnCertificate() {
     try {
-      const url = "https://api.sandbox.plugnotas.com.br/certificado"
+      const url = (process.env.CERTIFY_URL)
       const data = new FormData();
       const path = Path.resolve(__dirname, "arquivo", "cert_teste.pfx")
 
@@ -17,7 +19,7 @@ const Path = require("path")
         method: "POST",
         data, 
         headers: {
-          "x-api-key": "2da392a6-79d2-4304-a8b7-959572c7e44d",
+          "x-api-key": (process.env.X_API_KEY),
           ...data.getHeaders()
         },
       })
