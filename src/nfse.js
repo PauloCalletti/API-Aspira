@@ -1,13 +1,13 @@
-const data = require("./arquivo/data_nfse.js")
-
+ const data = require("./arquivo/data_nfse.js")
 const axios = require("axios");
 
+require("dotenv/config.js")
 
 const config = {
   method: "POST",
-  url: "https://api.sandbox.plugnotas.com.br/nfse",
+  url: (process.env.NFSE_URL),
   headers: { 
-    "x-api-key": "2da392a6-79d2-4304-a8b7-959572c7e44d", 
+    "x-api-key": (process.env.X_API_KEY), 
     "Content-Type": "application/json"
   },
   data : data
