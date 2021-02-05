@@ -4,7 +4,9 @@
   "description": "API para o programa ASPIRA",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./src --ext .js",
+    "lint-fix": "eslint ./src --ext .js"
   },
   "author": "Paulo",
   "license": "ISC",
@@ -14,7 +16,9 @@
     "form-data": "^3.0.0",
     "fs": "0.0.1-security"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.19.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PauloCalletti/API-Aspira.git"
