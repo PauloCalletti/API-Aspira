@@ -1,5 +1,9 @@
 const data = require("./arquivo/data_empresa.js")
 const Axios = require("axios");
+//TODO: Externalizar o config
+//TODO: Colocar o conteudo em uma função
+//TODO: Simplificar o data: data
+//TODO: Usar async/await ao invés de promises
 
 require("dotenv/config.js")
 

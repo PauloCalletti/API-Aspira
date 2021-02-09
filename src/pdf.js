@@ -2,6 +2,8 @@ const Path = require("path")
 const Axios = require("axios")
 const Fs = require("fs")
 
+//TODO: Externalizar o config
+
 require("dotenv/config.js")
 
    async function download() {

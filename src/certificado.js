@@ -3,6 +3,9 @@ const FormData = require("form-data");
 const Fs = require("fs");
 const Path = require("path")
 
+//TODO: Externalizar o config
+//TODO: Colocar senha do certificado no config
+
 require("dotenv/config.js")
 
   async function returnCertificate() {
