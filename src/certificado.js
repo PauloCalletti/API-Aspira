@@ -13,7 +13,7 @@ require("dotenv/config.js")
       const path = Path.resolve(__dirname, "arquivo", "cert_teste.pfx")
 
       data.append("arquivo", Fs.createReadStream(path));
-      data.append("senha", "123mudar");
+      data.append("senha", env.CERT_PASSWORD);
 
       const response = await Axios ({
         url,
