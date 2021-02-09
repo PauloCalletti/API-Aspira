@@ -1,13 +1,12 @@
 const Path = require("path")
 const Axios = require("axios")
 const Fs = require("fs")
-
-//TODO: Externalizar o config
+const env = require("../config.js")
 
 require("dotenv/config.js")
 
    async function download() {
-   const url = (process.env.XML_URL)
+   const url = env.XML_URL
    const path = Path.resolve(__dirname, "arquivo", "xml.xml")
    const writer = Fs.createWriteStream(path)
 
@@ -15,7 +14,7 @@ require("dotenv/config.js")
    url,
    method: "GET",
    headers: {
-      "x-api-key": (process.env.X_API_KEY),
+      "x-api-key": env.X_API_KEY,
    },
    responseType: "stream"
    })

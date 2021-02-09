@@ -2,27 +2,25 @@ const Axios = require("axios");
 const FormData = require("form-data");
 const Fs = require("fs");
 const Path = require("path")
-
-//TODO: Externalizar o config
-//TODO: Colocar senha do certificado no config
+const env = require("../config.js")
 
 require("dotenv/config.js")
 
   async function returnCertificate() {
     try {
-      const url = (process.env.CERTIFY_URL)
+      const url = env.CERTIFY_URL
       const data = new FormData();
       const path = Path.resolve(__dirname, "arquivo", "cert_teste.pfx")
 
       data.append("arquivo", Fs.createReadStream(path));
-      data.append("senha", "123mudar");
+      data.append("senha", env.CERT_PASSWORD);
 
       const response = await Axios ({
         url,
         method: "POST",
         data, 
         headers: {
-          "x-api-key": (process.env.X_API_KEY),
+          "x-api-key": env.X_API_KEY,
           ...data.getHeaders()
         },
       })
