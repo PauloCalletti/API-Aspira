@@ -1,27 +1,26 @@
-const data = require("./arquivo/data_empresa.js")
+const empresa = require("./arquivo/data_empresa.js")
 const Axios = require("axios");
-//TODO: Externalizar o config
-//TODO: Colocar o conteudo em uma função
-//TODO: Simplificar o data: data
-//TODO: Usar async/await ao invés de promises
+const env = require("../config.js")
 
 require("dotenv/config.js")
 
-const parameters = {
+async function postEmpresa(){
+  try {
+    const response = await Axios ({
 
-  method: "post",
-  url: (process.env.POST_URL),
-  headers: { 
-    "x-api-key": (process.env.X_API_KEY), 
-    "Content-Type": "application/json"
-  },
-  data : data
-};
-
-Axios(parameters)
-.then(function (check) {
-  console.log(JSON.stringify(check.data));
-})
-.catch(
-   console.error()
-);
+      method: "post",
+      url: env.POST_URL,
+      headers: { 
+        "x-api-key": env.X_API_KEY,
+        "Content-Type": "application/json"
+      },
+      data : empresa
+    });
+    console.log(JSON.stringify(response.data))
+    return response.data
+  }
+  catch(error){
+    console.error(error);
+  }
+}
+postEmpresa();
