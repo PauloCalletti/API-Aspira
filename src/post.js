@@ -1,26 +1,26 @@
-const empresa = require("./arquivo/data_empresa.js")
 const Axios = require("axios");
 const env = require("../config.js")
 
 require("dotenv/config.js")
 
-async function postEmpresa(){
-  try {
-    const response = await Axios ({
+async function postEmpresa(data_empresa){
+   try {
+      const URL = env.URL_PLUG
+      const KEY = env.X_API_KEY
+      const response = await Axios ({
 
-      method: "post",
-      url: env.POST_URL,
+      method: "POST",
+      url: `${URL}/empresa`,
       headers: { 
-        "x-api-key": env.X_API_KEY,
-        "Content-Type": "application/json"
+         "x-api-key": `${KEY}`,
+         "Content-Type": "application/json"
       },
-      data : empresa
-    });
-    console.log(JSON.stringify(response.data))
-    return response.data
-  }
-  catch(error){
-    console.error(error);
-  }
+      data : `${data_empresa}`
+      });
+      return response.data
+   }
+   catch(error){
+      throw new Error(error)
+   }
 }
-postEmpresa();
+module.exports = postEmpresa;
