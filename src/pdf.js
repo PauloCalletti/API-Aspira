@@ -1,29 +1,26 @@
-const Path = require("path")
+
 const Axios = require("axios")
-const Fs = require("fs")
 const env = require("../config.js")
 
 require("dotenv/config.js")
 
-   async function download() {
-   const url = env.PDF_URL
-   const path = Path.resolve(__dirname, "arquivo", "pdf.pdf")
-   const writer = Fs.createWriteStream(path)
+async function downloadPdf(id) {
+   try{
+      const URL = env.URL_PLUG;
+      const KEY = env.X_API_KEY
+      const response = await Axios({
+      url: `${URL}/nfse/pdf/${id}`,
+      method: "GET",
+      headers: {
+         "x-api-key": `${KEY}`,
+      },
+      responseType: "stream"
+      })
 
-   const response = await Axios({
-   url,
-   method: "GET",
-   headers: {
-      "x-api-key": env.X_API_KEY,
-   },
-   responseType: "stream"
-   })
-
-   response.data.pipe(writer)
-
-   return new Promise((resolve, reject) => {
-      writer.on("finish", resolve);
-      writer.on("error", reject);
-   });
+      return response.data
+   }
+   catch(error){
+      throw new Error(error)
+   }
 }
-download();
+module.exports = downloadPdf;
